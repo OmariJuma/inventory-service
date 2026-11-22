@@ -3,10 +3,7 @@ package com.omarjuma.inventory_service.controller;
 import com.omarjuma.inventory_service.service.InventoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/inventory")
@@ -16,7 +13,7 @@ public class InventoryController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public boolean isInStock(String sku, Integer quantity) {
+    public boolean isInStock(@RequestParam String sku, @RequestParam Integer quantity) {
         return inventoryService.isInStock(sku, quantity);
     }
 
